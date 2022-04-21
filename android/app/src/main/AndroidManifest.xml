@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dev.studiocloud.fruit_apps">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
         android:label="fruit_apps"
         android:name="${applicationName}"

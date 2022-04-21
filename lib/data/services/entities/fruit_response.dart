@@ -35,20 +35,20 @@ class FruitResponse {
 
 class Data {
   Data({
-    this.imagesReferences,
+    required this.imagesReferences,
     required this.fruits,
   });
 
-  ImagesReferences? imagesReferences;
+  Map<String, String> imagesReferences;
   List<Fruit> fruits;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        imagesReferences: ImagesReferences.fromJson(json["imagesReferences"]),
+        imagesReferences: Map<String, String>.from(json["imagesReferences"]),
         fruits: List<Fruit>.from(json["fruits"].map((x) => Fruit.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "imagesReferences": imagesReferences?.toJson(),
+        "imagesReferences": imagesReferences,
         "fruits": List<dynamic>.from(fruits.map((x) => x.toJson())),
       };
 }
@@ -70,38 +70,5 @@ class Fruit {
   Map<String, dynamic> toJson() => {
         "name": name,
         "price": price,
-      };
-}
-
-class ImagesReferences {
-  ImagesReferences({
-    required this.apple,
-    required this.manggo,
-    required this.banana,
-    required this.avocado,
-    required this.melon,
-  });
-
-  String apple;
-  String manggo;
-  String banana;
-  String avocado;
-  String melon;
-
-  factory ImagesReferences.fromJson(Map<String, dynamic> json) =>
-      ImagesReferences(
-        apple: json["apple"],
-        manggo: json["manggo"],
-        banana: json["banana"],
-        avocado: json["avocado"],
-        melon: json["melon"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "apple": apple,
-        "manggo": manggo,
-        "banana": banana,
-        "avocado": avocado,
-        "melon": melon,
       };
 }

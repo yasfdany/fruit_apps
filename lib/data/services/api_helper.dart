@@ -39,6 +39,16 @@ class ApiHelper {
       headers: parameter.header,
     );
 
+    try {
+      if (parameter.onFinish != null) parameter.onFinish!(response);
+    } catch (e) {
+      if (parameter.onUnhandleError != null) {
+        parameter.onUnhandleError!(e, response);
+      } else {
+        showError(e, response.body);
+      }
+    }
+
     return response;
   }
 }
