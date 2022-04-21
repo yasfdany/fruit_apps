@@ -4,6 +4,7 @@ import 'package:fruit_apps/data/controillers/fruit_controller.dart';
 import 'package:fruit_apps/data/controillers/user_controller.dart';
 import 'package:fruit_apps/data/services/entities/fruit_response.dart';
 import 'package:fruit_apps/ui/components/ripple_button.dart';
+import 'package:fruit_apps/ui/login_screen.dart';
 import 'package:get/get.dart';
 
 import 'components/item_fruit.dart';
@@ -35,6 +36,16 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text(
           "Fruit List",
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              userController.logout().then((_) {
+                Navigator.pushReplacementNamed(context, LoginScreen.route);
+              });
+            },
+            icon: const Icon(Icons.logout_rounded),
+          ),
+        ],
       ),
       body: SizedBox(
         width: double.infinity,

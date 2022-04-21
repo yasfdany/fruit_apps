@@ -10,6 +10,10 @@ class UserController extends GetxController {
     return user;
   }
 
+  Future logout() {
+    return _firebaseAuth.signOut();
+  }
+
   void login({
     Function(UserCredential)? onFinish,
     Function(Object? error)? onFailed,
