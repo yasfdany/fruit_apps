@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "733736658719",
+    "project_id": "fruitapp-9ffdc",
+    "storage_bucket": "fruitapp-9ffdc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733736658719:android:a6dfdffe1ece94fa98f22a",
+        "android_client_info": {
+          "package_name": "dev.studiocloud.fruit_apps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733736658719-ffltlp37vvcgcflljv23dfatkfnv2c8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIMoqgquJSrzLGbRB_Wzmk_rvbGNN7RXY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733736658719-ffltlp37vvcgcflljv23dfatkfnv2c8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
