@@ -133,16 +133,22 @@ class _HomeScreenState extends State<HomeScreen> {
         container[fruit.name] = 1;
       }
     }
+
+    int biggerCount = 0;
+    String fruitName = "";
+
     for (MapEntry entry in container.entries) {
-      if (entry.value > 1) {
-        showDialog(
-          context: context,
-          builder: (context) => ModalDuplicateFruit(
-            entry: entry,
-          ),
-        );
-        break;
+      if (entry.value > biggerCount) {
+        biggerCount = entry.value;
+        fruitName = entry.key;
       }
     }
+
+    showDialog(
+      context: context,
+      builder: (context) => ModalDuplicateFruit(
+        entry: MapEntry(fruitName, biggerCount),
+      ),
+    );
   }
 }
