@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fruit_apps/ui/login_screen.dart';
 
 import 'ui/home_screen.dart';
 
@@ -20,7 +21,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      routes: {
+        "/login": (context) => const LoginScreen(),
+        "/home": (context) => const HomeScreen(),
+      },
+      initialRoute: "/login",
     );
   }
 }

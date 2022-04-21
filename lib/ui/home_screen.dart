@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fruit_apps/data/controillers/fruit_controller.dart';
 import 'package:fruit_apps/data/controillers/user_controller.dart';
 import 'package:fruit_apps/data/services/entities/fruit_response.dart';
@@ -11,6 +10,7 @@ import 'components/item_fruit.dart';
 import 'components/modal_duplicate_fruit.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const route = "/home";
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -18,27 +18,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  UserController userController = Get.put(UserController());
+  UserController userController = Get.find();
   FruitController fruitController = Get.put(FruitController());
   RxString selectedImage = RxString("");
 
   @override
   void initState() {
     super.initState();
-    userController.getUser();
-    if (userController.user != null) {
-      fruitController.getFruit();
-    } else {
-      userController.login(
-        onFinish: (credential) {
-          Fluttertoast.showToast(msg: "Successfull Loged in");
-          fruitController.getFruit();
-        },
-        onFailed: (error) {
-          Fluttertoast.showToast(msg: error.toString());
-        },
-      );
-    }
+    fruitController.getFruit();
   }
 
   @override
