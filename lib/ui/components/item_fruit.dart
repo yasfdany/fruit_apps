@@ -27,7 +27,7 @@ class ItemFruit extends StatelessWidget {
             style: const TextStyle(fontSize: 16),
           ),
           Text(
-            "total: " + fruit.price.toString(),
+            "total: Rp." + fruit.price.toString(),
             style: const TextStyle(fontSize: 16),
           )
         ],

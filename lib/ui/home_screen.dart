@@ -8,6 +8,7 @@ import 'package:fruit_apps/ui/components/ripple_button.dart';
 import 'package:get/get.dart';
 
 import 'components/item_fruit.dart';
+import 'components/modal_duplicate_fruit.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -56,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: Obx(
                 () => fruitController.loading.value
-                    ? const CircularProgressIndicator()
+                    ? const Center(child: CircularProgressIndicator())
                     : Scrollbar(
                         isAlwaysShown: true,
                         child: ListView.builder(
@@ -107,7 +108,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   Container(
                     margin: const EdgeInsets.all(42),
                     child: RippleButton(
-                      onTap: () {},
+                      onTap: () {
+                        showDuplicateFruit(context);
+                      },
                       text: "Show Duplicate Fruit",
                       color: Theme.of(context).primaryColor,
                     ),
@@ -119,5 +122,27 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  void showDuplicateFruit(BuildContext context) {
+    Map<String, int> container = {};
+    for (Fruit fruit in fruitController.fruits) {
+      if (container.containsKey(fruit.name)) {
+        container[fruit.name] = container[fruit.name]! + 1;
+      } else {
+        container[fruit.name] = 1;
+      }
+    }
+    for (MapEntry entry in container.entries) {
+      if (entry.value > 1) {
+        showDialog(
+          context: context,
+          builder: (context) => ModalDuplicateFruit(
+            entry: entry,
+          ),
+        );
+        break;
+      }
+    }
   }
 }
