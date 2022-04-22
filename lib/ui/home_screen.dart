@@ -19,9 +19,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  UserController userController = Get.find();
-  FruitController fruitController = Get.put(FruitController());
-  RxString selectedImage = RxString("");
+  final UserController userController = Get.find();
+  final FruitController fruitController = Get.put(FruitController());
+  final RxString selectedImage = RxString("");
 
   @override
   void initState() {

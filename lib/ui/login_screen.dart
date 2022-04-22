@@ -17,8 +17,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  UserController userController = Get.put(UserController());
-  RxBool loading = RxBool(false);
+  final UserController userController = Get.put(UserController());
+  final RxBool loading = RxBool(false);
 
   @override
   void initState() {
