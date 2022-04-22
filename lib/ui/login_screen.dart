@@ -48,6 +48,8 @@ class _LoginScreenState extends State<LoginScreen> {
               () => loading.value
                   ? const Center(child: CircularProgressIndicator())
                   : RippleButton(
+                      radius: 4,
+                      enableShadow: true,
                       color: Theme.of(context).primaryColor,
                       onTap: () {
                         loading.value = true;

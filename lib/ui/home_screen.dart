@@ -52,6 +52,58 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Container(
+              margin: const EdgeInsets.only(
+                top: 24,
+                left: 24,
+                right: 24,
+              ),
+              child: Obx(
+                () => Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        offset: const Offset(0, 12),
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 12,
+                      ),
+                    ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: CachedNetworkImage(
+                      imageUrl: selectedImage.value.isEmpty
+                          ? "https://justfruitsandexotics.com/wp-content/uploads/placeholder.jpg"
+                          : selectedImage.value,
+                      width: double.infinity,
+                      height: 240,
+                      placeholder: (context, url) => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(
+                top: 42,
+                bottom: 24,
+                left: 24,
+                right: 24,
+              ),
+              child: RippleButton(
+                radius: 4,
+                enableShadow: true,
+                onTap: () {
+                  showDuplicateFruit(context);
+                },
+                text: "Show Duplicate Fruit",
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
             Expanded(
               child: Obx(
                 () => fruitController.loading.value
@@ -67,53 +119,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemBuilder: (context, index) {
                             Fruit fruit = fruitController.fruits[index];
 
-                            return ItemFruit(
-                              fruit: fruit,
-                              onTap: () {
-                                selectedImage.value = fruitController
-                                        .imageReference
-                                        .containsKey(fruit.name)
-                                    ? fruitController
-                                        .imageReference[fruit.name]!
-                                    : "";
-                              },
+                            return Container(
+                              margin: const EdgeInsets.only(bottom: 12),
+                              child: ItemFruit(
+                                fruit: fruit,
+                                onTap: () {
+                                  selectedImage.value = fruitController
+                                          .imageReference
+                                          .containsKey(fruit.name)
+                                      ? fruitController
+                                          .imageReference[fruit.name]!
+                                      : "";
+                                },
+                              ),
                             );
                           },
                         ),
                       ),
-              ),
-            ),
-            Container(height: 52),
-            Center(
-              child: Obx(
-                () => CachedNetworkImage(
-                  imageUrl: selectedImage.value.isEmpty
-                      ? "https://justfruitsandexotics.com/wp-content/uploads/placeholder.jpg"
-                      : selectedImage.value,
-                  width: 240,
-                  height: 240,
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.all(42),
-                    child: RippleButton(
-                      onTap: () {
-                        showDuplicateFruit(context);
-                      },
-                      text: "Show Duplicate Fruit",
-                      color: Theme.of(context).primaryColor,
-                    ),
-                  ),
-                ],
               ),
             ),
           ],
