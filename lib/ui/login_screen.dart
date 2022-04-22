@@ -5,7 +5,7 @@ import 'package:fruit_apps/ui/components/ripple_button.dart';
 import 'package:fruit_apps/ui/home_screen.dart';
 import 'package:get/get.dart';
 
-import '../data/controillers/user_controller.dart';
+import '../data/controllers/user_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   static const route = "/login";
@@ -57,7 +57,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           onFinish: (credential) {
                             Fluttertoast.showToast(msg: "Successfull Loged in");
                             Navigator.pushReplacementNamed(
-                                context, HomeScreen.route);
+                              context,
+                              HomeScreen.route,
+                            );
                           },
                           onFailed: (error) {
                             Fluttertoast.showToast(msg: error.toString());

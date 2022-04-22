@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:fruit_apps/data/controillers/fruit_controller.dart';
-import 'package:fruit_apps/data/controillers/user_controller.dart';
+import 'package:fruit_apps/data/controllers/fruit_controller.dart';
+import 'package:fruit_apps/data/controllers/user_controller.dart';
 import 'package:fruit_apps/data/services/entities/fruit_response.dart';
 import 'package:fruit_apps/ui/components/ripple_button.dart';
 import 'package:fruit_apps/ui/login_screen.dart';

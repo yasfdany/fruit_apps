@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:fruit_apps/data/controillers/fruit_controller.dart';
+import 'package:fruit_apps/data/controllers/fruit_controller.dart';
 import 'package:get/get.dart';
 
 import '../../data/services/entities/fruit_response.dart';
